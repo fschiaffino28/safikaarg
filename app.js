@@ -1,20 +1,24 @@
 
 const products = {
 remeras:[
-{name:"Black Tee",price:29000},
-{name:"Brown Tee",price:31000}
+{name:"Black Tee",price:29000,class:"dark"},
+{name:"Brown Tee",price:31000,class:"brown"},
+{name:"Grey Tee",price:28000,class:"grey"}
 ],
 pantalones:[
-{name:"Grey Cargo",price:48000},
-{name:"Black Pant",price:52000}
+{name:"Grey Cargo",price:48000,class:"grey"},
+{name:"Black Pant",price:52000,class:"dark"},
+{name:"Brown Utility",price:50000,class:"brown"}
 ],
 buzos:[
-{name:"Urban Hoodie",price:59000},
-{name:"Grey Crewneck",price:56000}
+{name:"Urban Hoodie",price:59000,class:"dark"},
+{name:"Brown Hoodie",price:62000,class:"brown"},
+{name:"Grey Crewneck",price:56000,class:"grey"}
 ],
 accesorios:[
-{name:"Safika Cap",price:18000},
-{name:"Shoulder Bag",price:24000}
+{name:"Safika Cap",price:18000,class:"dark"},
+{name:"Shoulder Bag",price:24000,class:"brown"},
+{name:"Beanie",price:16000,class:"grey"}
 ]
 };
 
@@ -31,8 +35,16 @@ products[category].forEach(product => {
 
 container.innerHTML += `
 <div class="product" onclick='openProduct(${JSON.stringify(product)})'>
+
+<div class="productImageCard ${product.class}">
+${product.name}
+</div>
+
+<div class="productInfo">
 <h3>${product.name}</h3>
 <p>$${product.price}</p>
+</div>
+
 </div>
 `;
 
@@ -46,6 +58,10 @@ currentProduct = product;
 
 document.getElementById("productTitle").innerText = product.name;
 document.getElementById("productPrice").innerText = "$" + product.price;
+
+const image = document.getElementById("productImage");
+
+image.className = "productImage " + product.class;
 
 document.getElementById("productModal").style.display = "flex";
 

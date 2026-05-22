@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<div class="promo">SAFIKA · Urban Elegance · Nueva colección</div>
+
 <header class="header">
 <h1>SAFIKA</h1>
 
@@ -17,12 +19,39 @@
 </div>
 </header>
 
+<section class="hero">
+<div>
+<p class="mini">Nueva colección</p>
+<h2>Streetwear premium.</h2>
+<p>Explorá las categorías y elegí tu estilo.</p>
+</div>
+
+<div class="logoBox">
+<div class="logo3d">SAFIKA</div>
+</div>
+</section>
+
 <section class="categories">
 
-<div class="category" onclick="showCategory('remeras')">Remeras</div>
-<div class="category" onclick="showCategory('pantalones')">Pantalones</div>
-<div class="category" onclick="showCategory('buzos')">Buzos</div>
-<div class="category" onclick="showCategory('accesorios')">Accesorios</div>
+<div class="category remeras" onclick="showCategory('remeras')">
+<h3>Remeras</h3>
+<p>Oversized y boxy fit</p>
+</div>
+
+<div class="category pantalones" onclick="showCategory('pantalones')">
+<h3>Pantalones</h3>
+<p>Cargos y wide pants</p>
+</div>
+
+<div class="category buzos" onclick="showCategory('buzos')">
+<h3>Buzos</h3>
+<p>Hoodies premium</p>
+</div>
+
+<div class="category accesorios" onclick="showCategory('accesorios')">
+<h3>Accesorios</h3>
+<p>Detalles del outfit</p>
+</div>
 
 </section>
 
@@ -30,9 +59,13 @@
 
 <div id="productModal" class="modal">
 <div class="modalContent">
-<button class="closeBtn" onclick="closeProduct()">X</button>
+
+<button class="closeBtn" onclick="closeProduct()">×</button>
+
+<div id="productImage" class="productImage"></div>
 
 <h2 id="productTitle"></h2>
+
 <p id="productPrice"></p>
 
 <label>Talle</label>
@@ -58,7 +91,8 @@
 
 <div id="cartModal" class="modal">
 <div class="modalContent">
-<button class="closeBtn" onclick="closeCart()">X</button>
+
+<button class="closeBtn" onclick="closeCart()">×</button>
 
 <h2>Carrito</h2>
 
@@ -69,6 +103,7 @@
 <select>
 <option>Mercado Pago</option>
 <option>Tarjeta</option>
+<option>Transferencia</option>
 </select>
 
 <button class="buyBtn">Pagar</button>
@@ -77,5 +112,6 @@
 </div>
 
 <script src="app.js"></script>
+
 </body>
 </html>
