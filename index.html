@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safika</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="promo">Últimos lanzamientos · Safika · Tienda demo</div>
+
+  <header class="header">
+    <div class="brand">SAFIKA</div>
+    <nav>
+      <a href="#productos">Productos</a>
+      <a href="#coleccion">Colección</a>
+      <button onclick="openAccount()" id="accountBtn">Crear cuenta</button>
+      <button class="cartBtn" onclick="openCart()">Carrito <span id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="mini">Nueva colección</p>
+      <h1>Lo último que salió.</h1>
+      <p>Podés mirar productos sin cuenta, pero para comprar tenés que crear una cuenta demo.</p>
+      <a href="#productos" class="btn">Ver productos</a>
+    </div>
+    <div class="stage"><div class="logo3d">SAFIKA</div></div>
+  </section>
+
+  <section id="productos" class="products">
+    <p class="mini">Drop actual</p>
+    <h2>Productos</h2>
+    <div class="grid">
+      <article class="product" onclick="openProduct(1)"><div class="photo p1">Remera Black Essential</div><div class="info"><h3>Black Essential</h3><p>$29.000</p></div></article>
+      <article class="product" onclick="openProduct(2)"><div class="photo p2">Brown Oversized</div><div class="info"><h3>Brown Oversized</h3><p>$31.000</p></div></article>
+      <article class="product" onclick="openProduct(3)"><div class="photo p3">Grey Cargo</div><div class="info"><h3>Grey Cargo</h3><p>$48.000</p></div></article>
+      <article class="product" onclick="openProduct(4)"><div class="photo p4">Urban Hoodie</div><div class="info"><h3>Urban Hoodie</h3><p>$59.000</p></div></article>
+    </div>
+  </section>
+
+  <section id="coleccion" class="collection">
+    <div>
+      <p class="mini">Safika Studio</p>
+      <h2>Minimalismo urbano.</h2>
+      <p>Una marca de prueba con estética streetwear premium.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div><h3>SAFIKA</h3><p>Urban wear · Buenos Aires</p></div>
+    <div class="footer-links"><a href="https://instagram.com/" target="_blank">Instagram</a><a href="https://wa.me/5490000000000" target="_blank">WhatsApp</a></div>
+  </footer>
+
+  <div id="accountModal" class="modal">
+    <div class="modal-box">
+      <button class="close" onclick="closeAccount()">×</button>
+      <h2>Crear cuenta</h2>
+      <p class="small">Demo: se guarda en tu navegador. Sirve para probar el flujo.</p>
+      <label>Nombre completo</label><input id="regName" placeholder="Ej: Juan Pérez">
+      <label>Email</label><input id="regEmail" placeholder="Ej: juan@gmail.com">
+      <label>Teléfono</label><input id="regPhone" placeholder="Ej: 11 2345-6789">
+      <label>Contraseña</label><input id="regPass" type="password" placeholder="Contraseña">
+      <button class="buy" onclick="createAccount()">Crear cuenta demo</button>
+      <p id="accountMsg"></p>
+    </div>
+  </div>
+
+  <div id="productModal" class="modal">
+    <div class="modal-box">
+      <button class="close" onclick="closeProduct()">×</button>
+      <h2 id="productTitle">Producto</h2>
+      <p id="productPrice">$0</p>
+      <label>Talle</label><select id="size"><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+      <label>Color</label><select id="color"><option>Negro</option><option>Blanco</option><option>Gris</option><option>Marrón</option></select>
+      <button class="buy" onclick="addToCart()">Agregar al carrito</button>
+      <p id="productMsg"></p>
+    </div>
+  </div>
+
+  <div id="cartModal" class="modal">
+    <div class="modal-box big">
+      <button class="close" onclick="closeCart()">×</button>
+      <h2>Carrito</h2>
+      <div id="cartItems"></div>
+      <h3 id="cartTotal">Total: $0</h3>
+      <hr>
+      <h3>Medio de pago</h3>
+      <select id="paymentMethod"><option>Mercado Pago</option><option>Tarjeta de crédito</option><option>Transferencia</option></select>
+      <p class="small">Pago demo: todavía no cobra dinero real.</p>
+      <button class="buy" onclick="startCheckout()">Continuar al pago</button>
+      <p id="cartMsg"></p>
+    </div>
+  </div>
+
+  <div id="shippingModal" class="modal">
+    <div class="modal-box">
+      <button class="close" onclick="closeShipping()">×</button>
+      <h2>Datos para envío</h2>
+      <p class="small">Ya usamos tu nombre, email y teléfono de la cuenta. Completá lo que falta.</p>
+      <label>Dirección</label><input id="shipAddress" placeholder="Ej: Av. Corrientes 1234">
+      <label>Código Postal</label><input id="shipPostal" placeholder="Ej: 1425">
+      <label>Ciudad / Zona</label><input id="shipCity" placeholder="Ej: Palermo, CABA">
+      <button class="buy" onclick="finishOrder()">Pagar demo y enviar pedido</button>
+      <p id="shippingMsg"></p>
+    </div>
+  </div>
+
+  <script>window.GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxftvfZvuhmyADtYqINQRu9Iko2lLwORQr7o4-J7P-YGWEkxB-UbAmjhp-LN2d1tqTN/exec";</script>
+  <script src="app.js"></script>
+</body>
+</html>
