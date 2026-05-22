@@ -23,7 +23,7 @@
     <div>
       <p class="mini">Nueva colección</p>
       <h1>Lo último que salió.</h1>
-      <p>Podés mirar productos sin cuenta, pero para comprar tenés que crear una cuenta demo.</p>
+      <p>Podés mirar productos sin cuenta, elegir talle y color, y agregar al carrito. Para comprar te pide cuenta demo.</p>
       <a href="#productos" class="btn">Ver productos</a>
     </div>
     <div class="stage"><div class="logo3d">SAFIKA</div></div>
@@ -33,10 +33,22 @@
     <p class="mini">Drop actual</p>
     <h2>Productos</h2>
     <div class="grid">
-      <article class="product" onclick="openProduct(1)"><div class="photo p1">Remera Black Essential</div><div class="info"><h3>Black Essential</h3><p>$29.000</p></div></article>
-      <article class="product" onclick="openProduct(2)"><div class="photo p2">Brown Oversized</div><div class="info"><h3>Brown Oversized</h3><p>$31.000</p></div></article>
-      <article class="product" onclick="openProduct(3)"><div class="photo p3">Grey Cargo</div><div class="info"><h3>Grey Cargo</h3><p>$48.000</p></div></article>
-      <article class="product" onclick="openProduct(4)"><div class="photo p4">Urban Hoodie</div><div class="info"><h3>Urban Hoodie</h3><p>$59.000</p></div></article>
+      <article class="product" onclick="openProduct(1)">
+        <div class="photo p1">Remera Black Essential</div>
+        <div class="info"><h3>Black Essential</h3><p>$29.000</p></div>
+      </article>
+      <article class="product" onclick="openProduct(2)">
+        <div class="photo p2">Brown Oversized</div>
+        <div class="info"><h3>Brown Oversized</h3><p>$31.000</p></div>
+      </article>
+      <article class="product" onclick="openProduct(3)">
+        <div class="photo p3">Grey Cargo</div>
+        <div class="info"><h3>Grey Cargo</h3><p>$48.000</p></div>
+      </article>
+      <article class="product" onclick="openProduct(4)">
+        <div class="photo p4">Urban Hoodie</div>
+        <div class="info"><h3>Urban Hoodie</h3><p>$59.000</p></div>
+      </article>
     </div>
   </section>
 
@@ -50,8 +62,61 @@
 
   <footer>
     <div><h3>SAFIKA</h3><p>Urban wear · Buenos Aires</p></div>
-    <div class="footer-links"><a href="https://instagram.com/" target="_blank">Instagram</a><a href="https://wa.me/5490000000000" target="_blank">WhatsApp</a></div>
+    <div class="footer-links">
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+      <a href="https://wa.me/5490000000000" target="_blank">WhatsApp</a>
+    </div>
   </footer>
+
+  <div id="productPanel" class="product-panel">
+    <button class="panel-close" onclick="closeProduct()">×</button>
+    <div class="detail-wrap">
+      <div class="detail-gallery">
+        <div id="mainProductImage" class="detail-main p1">Remera Black Essential</div>
+        <div class="thumbs">
+          <button id="thumb1" onclick="changeView(0)">Frente</button>
+          <button id="thumb2" onclick="changeView(1)">Espalda</button>
+          <button id="thumb3" onclick="changeView(2)">Detalle</button>
+        </div>
+      </div>
+      <div class="detail-info">
+        <p class="mini">Producto seleccionado</p>
+        <h2 id="productTitle">Producto</h2>
+        <p id="productDescription">Descripción</p>
+        <h3 id="productPrice">$0</h3>
+
+        <div class="selector-block">
+          <label>Talle</label>
+          <div class="sizes">
+            <button onclick="setSize('S')">S</button>
+            <button onclick="setSize('M')">M</button>
+            <button onclick="setSize('L')">L</button>
+            <button onclick="setSize('XL')">XL</button>
+          </div>
+          <input type="hidden" id="size" value="M">
+        </div>
+
+        <div class="selector-block">
+          <label>Color</label>
+          <select id="color">
+            <option>Negro</option>
+            <option>Blanco</option>
+            <option>Gris</option>
+            <option>Marrón</option>
+          </select>
+        </div>
+
+        <div class="details">
+          <h4>Detalles</h4>
+          <ul id="productDetails"></ul>
+        </div>
+
+        <button class="buy" onclick="addToCart()">Agregar al carrito</button>
+        <button class="ghost" onclick="openCart()">Ir al carrito</button>
+        <p id="productMsg"></p>
+      </div>
+    </div>
+  </div>
 
   <div id="accountModal" class="modal">
     <div class="modal-box">
@@ -64,18 +129,6 @@
       <label>Contraseña</label><input id="regPass" type="password" placeholder="Contraseña">
       <button class="buy" onclick="createAccount()">Crear cuenta demo</button>
       <p id="accountMsg"></p>
-    </div>
-  </div>
-
-  <div id="productModal" class="modal">
-    <div class="modal-box">
-      <button class="close" onclick="closeProduct()">×</button>
-      <h2 id="productTitle">Producto</h2>
-      <p id="productPrice">$0</p>
-      <label>Talle</label><select id="size"><option>S</option><option>M</option><option>L</option><option>XL</option></select>
-      <label>Color</label><select id="color"><option>Negro</option><option>Blanco</option><option>Gris</option><option>Marrón</option></select>
-      <button class="buy" onclick="addToCart()">Agregar al carrito</button>
-      <p id="productMsg"></p>
     </div>
   </div>
 
