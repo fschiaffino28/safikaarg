@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safika</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="promo">Últimos lanzamientos · Safika</div>
+
+<header class="header">
+  <div class="brand">SAFIKA</div>
+
+  <nav>
+    <a href="#categorias">Categorías</a>
+    <button onclick="openCart()" class="cartBtn">
+      Carrito <span id="cartCount">0</span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="mini">Nueva colección</p>
+    <h1>Lo último que salió.</h1>
+    <p>Elegí una categoría y descubrí los productos de Safika.</p>
+    <a href="#categorias" class="btn">Ver categorías</a>
+  </div>
+
+  <div class="stage">
+    <div class="logo3d">SAFIKA</div>
+  </div>
+</section>
+
+<section id="categorias" class="categories">
+
+  <p class="mini">Elegí qué querés ver</p>
+  <h2>Categorías</h2>
+
+  <div class="categoryGrid">
+
+    <article class="category remeras" onclick="showCategory('remeras')">
+      <span>01</span>
+      <h3>Remeras</h3>
+      <p>Boxy, oversized y básicas premium.</p>
+    </article>
+
+    <article class="category pantalones" onclick="showCategory('pantalones')">
+      <span>02</span>
+      <h3>Pantalones</h3>
+      <p>Cargos, joggers y cortes urbanos.</p>
+    </article>
+
+    <article class="category buzos" onclick="showCategory('buzos')">
+      <span>03</span>
+      <h3>Buzos</h3>
+      <p>Hoodies y crewnecks para el día a día.</p>
+    </article>
+
+    <article class="category accesorios" onclick="showCategory('accesorios')">
+      <span>04</span>
+      <h3>Accesorios</h3>
+      <p>Gorras, bolsos y detalles para completar el outfit.</p>
+    </article>
+
+  </div>
+
+</section>
+
+<section id="productos" class="products hidden">
+
+  <button class="backBtn" onclick="backToCategories()">← Volver a categorías</button>
+
+  <p class="mini" id="categoryMini">Categoría</p>
+  <h2 id="categoryTitle">Productos</h2>
+
+  <div id="productGrid" class="grid"></div>
+
+</section>
+
+<div id="productPanel" class="product-panel">
+
+  <button class="panel-close" onclick="closeProduct()">×</button>
+
+  <div class="detail-wrap">
+
+    <div class="detail-main" id="mainImage">
+      Producto
+    </div>
+
+    <div class="detail-info">
+
+      <p class="mini">Producto seleccionado</p>
+
+      <h2 id="productTitle">Producto</h2>
+
+      <p id="productDesc">
+        Producto premium urbano.
+      </p>
+
+      <h3 id="productPrice">$0</h3>
+
+      <label>Talle</label>
+
+      <div class="sizes">
+        <button onclick="setSize('S')">S</button>
+        <button onclick="setSize('M')">M</button>
+        <button onclick="setSize('L')">L</button>
+        <button onclick="setSize('XL')">XL</button>
+      </div>
+
+      <label>Color</label>
+
+      <select id="color">
+        <option>Negro</option>
+        <option>Blanco</option>
+        <option>Gris</option>
+        <option>Marrón</option>
+      </select>
+
+      <button class="buy" onclick="addToCart()">
+        Agregar al carrito
+      </button>
+
+      <p id="productMsg"></p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="cartModal" class="modal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeCart()">×</button>
+
+    <h2>Carrito</h2>
+
+    <div id="cartItems"></div>
+
+    <h3 id="cartTotal">Total: $0</h3>
+
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    <h3>SAFIKA</h3>
+    <p>Urban wear · Buenos Aires</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
