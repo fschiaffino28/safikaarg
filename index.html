@@ -1,190 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Safika</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safika</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="promo">Últimos lanzamientos · Safika · Tienda demo</div>
-
 <header class="header">
-  <div class="brand">SAFIKA</div>
+<h1>SAFIKA</h1>
 
-  <nav>
-    <a href="#categorias">Categorías</a>
-    <button onclick="openAccount()" id="accountBtn">Crear cuenta</button>
-    <button onclick="openCart()" class="cartBtn">
-      Carrito <span id="cartCount">0</span>
-    </button>
-  </nav>
+<div class="topButtons">
+<button onclick="openCart()">🛒 Carrito (<span id="cartCount">0</span>)</button>
+</div>
 </header>
 
-<section class="hero">
-  <div>
-    <p class="mini">Nueva colección</p>
-    <h1>Lo último que salió.</h1>
-    <p>Elegí una categoría, mirá productos, agregalos al carrito y probá el flujo de compra.</p>
-    <a href="#categorias" class="btn">Ver categorías</a>
-  </div>
+<section class="categories">
 
-  <div class="stage">
-    <div class="logo3d">SAFIKA</div>
-  </div>
+<div class="category" onclick="showCategory('remeras')">Remeras</div>
+<div class="category" onclick="showCategory('pantalones')">Pantalones</div>
+<div class="category" onclick="showCategory('buzos')">Buzos</div>
+<div class="category" onclick="showCategory('accesorios')">Accesorios</div>
+
 </section>
 
-<section id="categorias" class="categories">
-  <p class="mini">Elegí qué querés ver</p>
-  <h2>Categorías</h2>
+<section id="products" class="products"></section>
 
-  <div class="categoryGrid">
-    <article class="category remeras" onclick="showCategory('remeras')">
-      <span>01</span>
-      <h3>Remeras</h3>
-      <p>Boxy, oversized y básicas premium.</p>
-    </article>
+<div id="productModal" class="modal">
+<div class="modalContent">
+<button class="closeBtn" onclick="closeProduct()">X</button>
 
-    <article class="category pantalones" onclick="showCategory('pantalones')">
-      <span>02</span>
-      <h3>Pantalones</h3>
-      <p>Cargos, joggers y cortes urbanos.</p>
-    </article>
+<h2 id="productTitle"></h2>
+<p id="productPrice"></p>
 
-    <article class="category buzos" onclick="showCategory('buzos')">
-      <span>03</span>
-      <h3>Buzos</h3>
-      <p>Hoodies y crewnecks para el día a día.</p>
-    </article>
+<label>Talle</label>
+<select id="size">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
 
-    <article class="category accesorios" onclick="showCategory('accesorios')">
-      <span>04</span>
-      <h3>Accesorios</h3>
-      <p>Gorras, bolsos y detalles para completar el outfit.</p>
-    </article>
-  </div>
-</section>
+<label>Color</label>
+<select id="color">
+<option>Negro</option>
+<option>Blanco</option>
+<option>Gris</option>
+<option>Marrón</option>
+</select>
 
-<section id="productos" class="products hidden">
-  <button class="backBtn" onclick="backToCategories()">← Volver a categorías</button>
-  <p class="mini" id="categoryMini">Categoría</p>
-  <h2 id="categoryTitle">Productos</h2>
-  <div id="productGrid" class="grid"></div>
-</section>
+<button class="buyBtn" onclick="addToCart()">Agregar al carrito</button>
 
-<div id="productPanel" class="product-panel">
-  <button class="panel-close" onclick="closeProduct()">×</button>
-
-  <div class="detail-wrap">
-    <div class="detail-main" id="mainImage">Producto</div>
-
-    <div class="detail-info">
-      <p class="mini">Producto seleccionado</p>
-      <h2 id="productTitle">Producto</h2>
-      <p id="productDesc">Producto premium urbano.</p>
-      <h3 id="productPrice">$0</h3>
-
-      <label>Talle</label>
-      <div class="sizes">
-        <button onclick="setSize('S')">S</button>
-        <button onclick="setSize('M')">M</button>
-        <button onclick="setSize('L')">L</button>
-        <button onclick="setSize('XL')">XL</button>
-      </div>
-
-      <label>Color</label>
-      <select id="color">
-        <option>Negro</option>
-        <option>Blanco</option>
-        <option>Gris</option>
-        <option>Marrón</option>
-      </select>
-
-      <button class="buy" onclick="addToCart()">Agregar al carrito</button>
-      <button class="ghost" onclick="openCart()">Ir al carrito</button>
-      <p id="productMsg"></p>
-    </div>
-  </div>
 </div>
-
-<div id="accountModal" class="modal">
-  <div class="modal-box">
-    <button class="close" onclick="closeAccount()">×</button>
-    <h2>Crear cuenta</h2>
-    <p class="small">Demo: se guarda en tu navegador. Para comprar, primero necesitás cuenta.</p>
-
-    <label>Nombre completo</label>
-    <input id="regName" placeholder="Ej: Juan Pérez">
-
-    <label>Email</label>
-    <input id="regEmail" placeholder="Ej: juan@gmail.com">
-
-    <label>Teléfono</label>
-    <input id="regPhone" placeholder="Ej: 11 2345-6789">
-
-    <label>Contraseña</label>
-    <input id="regPass" type="password" placeholder="Contraseña">
-
-    <button class="buy" onclick="createAccount()">Crear cuenta demo</button>
-    <p id="accountMsg"></p>
-  </div>
 </div>
 
 <div id="cartModal" class="modal">
-  <div class="modal-box big">
-    <button class="close" onclick="closeCart()">×</button>
-    <h2>Carrito</h2>
-    <div id="cartItems"></div>
-    <h3 id="cartTotal">Total: $0</h3>
+<div class="modalContent">
+<button class="closeBtn" onclick="closeCart()">X</button>
 
-    <hr>
+<h2>Carrito</h2>
 
-    <h3>Medio de pago</h3>
-    <select id="paymentMethod">
-      <option>Mercado Pago</option>
-      <option>Tarjeta de crédito</option>
-      <option>Transferencia</option>
-    </select>
+<div id="cartItems"></div>
 
-    <p class="small">Esto es pago demo. Para cobrar plata real después se conecta Mercado Pago real.</p>
+<h3 id="cartTotal">Total: $0</h3>
 
-    <button class="buy" onclick="startCheckout()">Continuar al pago</button>
-    <p id="cartMsg"></p>
-  </div>
+<select>
+<option>Mercado Pago</option>
+<option>Tarjeta</option>
+</select>
+
+<button class="buyBtn">Pagar</button>
+
+</div>
 </div>
 
-<div id="shippingModal" class="modal">
-  <div class="modal-box">
-    <button class="close" onclick="closeShipping()">×</button>
-    <h2>Datos para envío</h2>
-    <p class="small">Ya usamos tu nombre, email y teléfono de la cuenta. Completá lo que falta.</p>
-
-    <label>Dirección</label>
-    <input id="shipAddress" placeholder="Ej: Av. Corrientes 1234">
-
-    <label>Código Postal</label>
-    <input id="shipPostal" placeholder="Ej: 1425">
-
-    <label>Ciudad / Zona</label>
-    <input id="shipCity" placeholder="Ej: Palermo, CABA">
-
-    <button class="buy" onclick="finishOrder()">Pagar demo y enviar pedido</button>
-    <p id="shippingMsg"></p>
-  </div>
-</div>
-
-<footer>
-  <div>
-    <h3>SAFIKA</h3>
-    <p>Urban wear · Buenos Aires</p>
-  </div>
-</footer>
-
-<script>
-  window.GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxftvfZvuhmyADtYqINQRu9Iko2lLwORQr7o4-J7P-YGWEkxB-UbAmjhp-LN2d1tqTN/exec";
-</script>
 <script src="app.js"></script>
-
 </body>
 </html>
