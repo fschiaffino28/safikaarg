@@ -100,17 +100,54 @@
 
 <h3 id="cartTotal">Total: $0</h3>
 
-<select>
+<label>Medio de pago</label>
+<select id="paymentMethod">
 <option>Mercado Pago</option>
 <option>Tarjeta</option>
 <option>Transferencia</option>
 </select>
 
-<button class="buyBtn">Pagar</button>
+<button class="buyBtn" onclick="openCheckout()">Pagar</button>
+<p id="cartMessage"></p>
 
 </div>
 </div>
 
+<div id="checkoutModal" class="modal">
+<div class="modalContent">
+
+<button class="closeBtn" onclick="closeCheckout()">×</button>
+
+<h2>Datos para la compra</h2>
+<p class="helpText">Pago demo: no cobra plata real. Sirve para guardar el pedido en Google Sheets.</p>
+
+<label>Nombre completo</label>
+<input id="clientName" placeholder="Ej: Juan Pérez">
+
+<label>Teléfono</label>
+<input id="clientPhone" placeholder="Ej: 11 2345-6789">
+
+<label>Email</label>
+<input id="clientEmail" placeholder="Ej: juan@gmail.com">
+
+<label>Dirección</label>
+<input id="clientAddress" placeholder="Ej: Av. Corrientes 1234">
+
+<label>Código Postal</label>
+<input id="clientPostal" placeholder="Ej: 1425">
+
+<label>Ciudad / Zona</label>
+<input id="clientCity" placeholder="Ej: Palermo, CABA">
+
+<button class="buyBtn" onclick="payAndSend()">Confirmar pago demo</button>
+<p id="checkoutMessage"></p>
+
+</div>
+</div>
+
+<script>
+window.GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxftvfZvuhmyADtYqINQRu9Iko2lLwORQr7o4-J7P-YGWEkxB-UbAmjhp-LN2d1tqTN/exec";
+</script>
 <script src="app.js"></script>
 
 </body>

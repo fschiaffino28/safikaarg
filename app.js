@@ -98,7 +98,7 @@ cartItems.innerHTML = "";
 
 let total = 0;
 
-cart.forEach(item => {
+cart.forEach((item,index) => {
 
 total += item.price;
 
@@ -107,7 +107,8 @@ cartItems.innerHTML += `
 <strong>${item.name}</strong><br>
 Talle: ${item.size}<br>
 Color: ${item.color}<br>
-$${item.price}
+$${item.price}<br>
+<button onclick="removeItem(${index})">Eliminar</button>
 </div>
 `;
 
@@ -117,10 +118,87 @@ document.getElementById("cartTotal").innerText = "Total: $" + total;
 
 }
 
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
+}
+
 function openCart(){
+document.getElementById("cartMessage").innerText = "";
 document.getElementById("cartModal").style.display = "flex";
 }
 
 function closeCart(){
 document.getElementById("cartModal").style.display = "none";
+}
+
+function openCheckout(){
+
+if(cart.length === 0){
+document.getElementById("cartMessage").innerText = "Primero agregá productos al carrito.";
+return;
+}
+
+closeCart();
+document.getElementById("checkoutMessage").innerText = "";
+document.getElementById("checkoutModal").style.display = "flex";
+
+}
+
+function closeCheckout(){
+document.getElementById("checkoutModal").style.display = "none";
+}
+
+function payAndSend(){
+
+const name = document.getElementById("clientName").value.trim();
+const phone = document.getElementById("clientPhone").value.trim();
+const email = document.getElementById("clientEmail").value.trim();
+const address = document.getElementById("clientAddress").value.trim();
+const postal = document.getElementById("clientPostal").value.trim();
+const city = document.getElementById("clientCity").value.trim();
+const paymentMethod = document.getElementById("paymentMethod").value;
+const message = document.getElementById("checkoutMessage");
+
+if(!name || !phone || !email || !address || !postal || !city){
+message.innerText = "Completá todos los datos.";
+return;
+}
+
+message.innerText = "Procesando pago demo y enviando pedido...";
+
+const requests = cart.map(item => {
+
+const order = {
+prenda:item.name,
+talle:item.size,
+color:item.color,
+cliente:name,
+telefono:phone,
+email:email,
+direccion:address + " - " + city,
+codigoPostal:postal,
+precio:"$" + item.price,
+estado:"Pendiente",
+medioPago:paymentMethod
+};
+
+return fetch(window.GOOGLE_SCRIPT_URL,{
+method:"POST",
+mode:"no-cors",
+body:JSON.stringify(order)
+});
+
+});
+
+Promise.all(requests)
+.then(() => {
+message.innerText = "Pago demo aprobado ✅ Pedido enviado al Google Sheet.";
+cart = [];
+updateCart();
+})
+.catch(() => {
+message.innerText = "Error al enviar. Probá desde Netlify.";
+});
+
 }

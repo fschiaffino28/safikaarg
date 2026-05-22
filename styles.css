@@ -209,6 +209,8 @@ border-radius:24px;
 width:90%;
 max-width:520px;
 position:relative;
+max-height:92vh;
+overflow:auto;
 }
 
 .closeBtn{
@@ -237,11 +239,19 @@ font-weight:900;
 margin:15px 0;
 }
 
-select{
+label{
+font-weight:900;
+display:block;
+margin-top:12px;
+margin-bottom:6px;
+}
+
+select,input{
 width:100%;
 padding:14px;
 border-radius:12px;
-margin-bottom:15px;
+margin-bottom:12px;
+border:1px solid #ccc;
 }
 
 .buyBtn{
@@ -261,6 +271,18 @@ background:#f3efe9;
 padding:12px;
 border-radius:14px;
 margin-bottom:12px;
+}
+
+.helpText{
+color:#666;
+font-size:14px;
+margin:10px 0;
+}
+
+#cartMessage,#checkoutMessage{
+margin-top:14px;
+font-weight:bold;
+color:#8b6c52;
 }
 
 @media(max-width:900px){
